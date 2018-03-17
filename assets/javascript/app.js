@@ -32,7 +32,7 @@ var questions = [{
 }, {
     question: "Essential Oils vibrate on the highest of frequencies",
     choices: ["True", "False"],
-    correctAnswer: 1
+    correctAnswer: 0
 }, {
     question: "___________ has the highest frequency of all of fragrances",
     choices: ["Lavender", "Musk", "Rose", "Patchoili"],
@@ -52,7 +52,7 @@ $(document).ready(function () {
 
     // Makes the first question pop up//
     displayCurrentQuestion();
-    $(this).find(".quizMessage").hide();
+    $(this).find(".triviaMessage").hide();
 
     // when user presses next question button prompts the next question
     $(this).find(".nextButton").on("click", function () {
@@ -61,12 +61,12 @@ $(document).ready(function () {
             value = $("input[type='radio']:checked").val();
 
             if (value == undefined) {
-                $(document).find(".quizMessage").text("Select an answer to move to the next question");
-                $(document).find(".quizMessage").show();
+                $(document).find(".triviaMessage").text("Select an answer to move to the next question");
+                $(document).find(".triviaMessage").show();
             } else {
-                // TODO: Remove any message -> not sure if this is efficient to call this each time....
-                $(document).find(".quizMessage").hide();
-
+                //Remove any message -> not sure if this is efficient to call this each time....
+                $(document).find(".triviaMessage").hide();
+                //scoring
                 if (value == questions[currentQuestion].correctAnswer) {
                     correctAnswers++;
                 }
@@ -76,26 +76,48 @@ $(document).ready(function () {
                     displayCurrentQuestion();
                 } else {
                     displayScore();
-                    // Change the text in the next button to ask if user wants to play again
-                    $(document).find(".nextButton").text("Play Again?");
+                    //Ask if user wants to play again ie a restart option
+                    $(document).find(".nextButton").text("Re-Play?");
                     quizOver = true;
                 }
             }
-        } else { // quiz is over and clicked the next button (which now displays 'Play Again?'
+        } else { // quiz ended and clicked the next button 'Play Again?'
             quizOver = false;
             $(document).find(".nextButton").text("Next Question");
             resetQuiz();
             displayCurrentQuestion();
             hideScore();
         }
-    });
+var timeCounter = 0
+var myTimer = setInterval(timeCounter, 8000);
+
+/*
+function timeCounter(){
+    timeCounter++;
+    console.log("counter", timeCounter);
+    if (timeCounter=== 8000) {
+        alert ("Time's UP! Move onto the next question", questions[currentQuestion]);
+        timeCounter = 0
+        }
+    }
+*/
+setTimeout(timeUp, 1000 * 10);
+function timeUp() {
+    
+
+    // in the element with an id of time-left add an h2 saying Time's Up!
+    // console log done
+    console.log("done");
+    $("#time-left").append("<h2>Time's Up!</h2>");
+    console.log("time is up");
+    };
 
 });
 
 // This displays the current question AND the choices
 function displayCurrentQuestion() {
 
-    console.log("In display current Question");
+    console.log("Display the current Question");
 
     var question = questions[currentQuestion].question;
     var questionClass = $(document).find(".quizContainer > .question");
@@ -129,3 +151,4 @@ function displayScore() {
 function hideScore() {
     $(document).find(".result").hide();
 }
+})
