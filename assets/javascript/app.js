@@ -87,6 +87,7 @@ $(document).ready(function () {
                 //scoring
                 if (value == questions[currentQuestion].correctAnswer) {
                     correctAnswers++;
+                    alert("Good Job!!");
                 }
 
                 currentQuestion++; // Since we have already displayed the first question on DOM ready
