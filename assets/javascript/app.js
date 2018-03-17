@@ -128,7 +128,10 @@ function timeUp() {
     // console log done
     console.log("done");
     $("#time-left").append("<h2>Time's Up!</h2>");
-
+/*
+    setInterval (function timeUp(){
+})
+*/
     $(document).find(".triviaMessage").text("Time's Up!");
     console.log("time is up");
     };
