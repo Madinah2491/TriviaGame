@@ -24,7 +24,7 @@
 var questions = [{
     question: "Attraction is based primarily on facial symetry",
     choices: ["True", "False"],
-    correctAnswer: 1
+    correctAnswer: 0
 }, {
     question: "Attraction is very primative, disliking someone without just cause could be your subconscious disliking their scent ",
     choices: ["True", "False"],
@@ -38,14 +38,32 @@ var questions = [{
     choices: ["Lavender", "Musk", "Rose", "Patchoili"],
     correctAnswer: 2
 }, {
-    question: "People are more likely to help you if they are attracted to you in one or more ways",
+    question: "People are more Likely to help you if they are attracted to you in one or more ways",
     choices: ["True", "False"],
     correctAnswer: 0
-}];
+}, {
+    question: "____________ is the intent to continue the relationship even in the face of difficulties.",
+    choices: ["Love", "Commitment", "Passion"],
+    correctAnswer: 1
+}, {
+    question: "___________ the obsessive thinking about and craving for a particular person",
+    choices: ["Attraction", "Lust", "Attachment"],
+    correctAnswer: 0
+}, {
+    question: "Bonus: I love staying up every Friday night doing homework And not socializing",
+    choices: ["True", "False"],
+    correctAnswer: 1 //Although I hate it I am looking at the bigger picture and know having no life is only temporary torture
+},
 
+
+];
 var currentQuestion = 0;
 var correctAnswers = 0;
 var quizOver = false;
+
+//begins game with any key stroke
+document.onkeyup = function(event) {
+
 
 //allows everything on the page to load//
 $(document).ready(function () {
@@ -101,14 +119,17 @@ function timeCounter(){
         }
     }
 */
+
+//set timer 10 sec
 setTimeout(timeUp, 1000 * 10);
 function timeUp() {
-    
 
     // in the element with an id of time-left add an h2 saying Time's Up!
     // console log done
     console.log("done");
     $("#time-left").append("<h2>Time's Up!</h2>");
+
+    $(document).find(".triviaMessage").text("Time's Up!");
     console.log("time is up");
     };
 
@@ -152,3 +173,4 @@ function hideScore() {
     $(document).find(".result").hide();
 }
 })
+}
