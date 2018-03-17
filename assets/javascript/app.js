@@ -100,7 +100,7 @@ $(document).ready(function () {
                     quizOver = true;
                 }
             }
-        } else { // quiz ended and clicked the next button 'Play Again?'
+        } else { // game ended and clicked the next button 'Play Again?'
             quizOver = false;
             $(document).find(".nextButton").text("Next Question");
             resetQuiz();
